@@ -11,20 +11,39 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:footyfinds/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  testWidgets('FutFinds app smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const FutFindsApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the app title is displayed
+    expect(find.text('FutFinds'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Verify that the three main tabs are present
+    expect(find.text('Fields'), findsOneWidget);
+    expect(find.text('Pick-ups'), findsOneWidget);
+    expect(find.text('Create-a-Match'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the app starts on the Fields tab
+    expect(find.text('Central Park Soccer Field'), findsOneWidget);
+  });
+
+  testWidgets('Tab navigation test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const FutFindsApp());
+
+    // Tap on the Pick-ups tab
+    await tester.tap(find.text('Pick-ups'));
+    await tester.pumpAndSettle();
+
+    // Verify that pickup games are displayed
+    expect(find.text('Central Park Soccer Field'), findsOneWidget);
+    expect(find.text('Sign Up'), findsWidgets);
+
+    // Tap on the Create-a-Match tab
+    await tester.tap(find.text('Create-a-Match'));
+    await tester.pumpAndSettle();
+
+    // Verify that the create match form is displayed
+    expect(find.text('Where will the game take place?'), findsOneWidget);
   });
 }
