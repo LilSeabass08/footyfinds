@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_state_provider.dart';
-import '../services/location_service.dart';
 import '../widgets/park_list_item.dart';
 
 class FieldListingsTab extends StatelessWidget {

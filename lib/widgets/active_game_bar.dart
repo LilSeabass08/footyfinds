@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../models/match.dart';
-import '../providers/app_state_provider.dart';
-import '../services/map_service.dart';
 import '../screens/game_details_screen.dart';
 
 class ActiveGameBar extends StatelessWidget {

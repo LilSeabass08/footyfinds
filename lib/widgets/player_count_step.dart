@@ -37,7 +37,7 @@ class PlayerCountStep extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<int>(
-                  value: selectedCount,
+                  initialValue: selectedCount,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
